@@ -69,7 +69,7 @@ if(isset($_POST['order'])){
 
    <form action="" method="POST">
 
-   <h3>Your Orders</h3>
+   <h3>Your Appointments</h3>
 
       <div class="display-orders">
       <?php
