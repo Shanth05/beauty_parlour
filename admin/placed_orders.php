@@ -23,7 +23,7 @@ if(isset($_GET['delete'])){
    $delete_id = $_GET['delete'];
    $delete_order = $conn->prepare("DELETE FROM `orders` WHERE id = ?");
    $delete_order->execute([$delete_id]);
-   header('location:placed_orders.php');
+   header('location:placed_appointments.php');
 }
 
 ?>
@@ -34,7 +34,7 @@ if(isset($_GET['delete'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Placed Orders.</title>
+   <title>Placed Appointments.</title>
 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
@@ -47,7 +47,7 @@ if(isset($_GET['delete'])){
 
 <section class="orders">
 
-<h1 class="heading">Placed Orders.</h1>
+<h1 class="heading">Placed Appointments.</h1>
 
 <div class="box-container">
 
@@ -74,7 +74,7 @@ if(isset($_GET['delete'])){
          </select>
         <div class="flex-btn">
          <input type="submit" value="update" class="option-btn" name="update_payment">
-         <a href="placed_orders.php?delete=<?= $fetch_orders['id']; ?>" class="delete-btn" onclick="return confirm('delete this order?');">delete</a>
+         <a href="placed_appointments.php?delete=<?= $fetch_orders['id']; ?>" class="delete-btn" onclick="return confirm('delete this order?');">delete</a>
         </div>
       </form>
    </div>
