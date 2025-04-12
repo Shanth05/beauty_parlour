@@ -54,7 +54,7 @@ if(!isset($admin_id)){
          ?>
          <h3><span>Nrs.</span><?= $total_pendings; ?><span>/-</span></h3>
          <p>Total pendings</p>
-         <a href="placed_orders.php" class="btn">See Orders.</a>
+         <a href="placed_appointments.php" class="btn">See Appointments.</a>
       </div>
 
       <div class="box">
@@ -70,7 +70,7 @@ if(!isset($admin_id)){
          ?>
          <h3><span>Nrs.</span><?= $total_completes; ?><span>/-</span></h3>
          <p>Completed orders</p>
-         <a href="placed_orders.php" class="btn">See orders</a>
+         <a href="placed_appointments.php" class="btn">See orders</a>
       </div>
 
       <div class="box">
@@ -80,8 +80,8 @@ if(!isset($admin_id)){
             $number_of_orders = $select_orders->rowCount()
          ?>
          <h3><?= $number_of_orders; ?></h3>
-         <p>Orders Placed.</p>
-         <a href="placed_orders.php" class="btn">See orders.</a>
+         <p>Appointments Placed.</p>
+         <a href="placed_appointments.php" class="btn">See orders.</a>
       </div>
 
       <div class="box">
@@ -91,7 +91,7 @@ if(!isset($admin_id)){
             $number_of_products = $select_products->rowCount()
          ?>
          <h3><?= $number_of_products; ?></h3>
-         <p>Products added</p>
+         <p>Services added</p>
          <a href="products.php" class="btn">See products</a>
       </div>
 
