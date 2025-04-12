@@ -20,8 +20,8 @@
       <nav class="navbar">
          <a href="home.php">Home</a>
          <a href="about.php">About Us</a>
-         <a href="orders.php">Orders</a>
-         <a href="shop.php">Shop Now</a>
+         <a href="appointments.php">Appointments</a>
+         <a href="services.php">Services Now</a>
          <a href="contact.php">Contact Us</a>
       </nav>
 
