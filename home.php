@@ -50,7 +50,7 @@ include 'components/wishlist_cart.php';
          <div class="content">
             <span>Upto 50% Off</span>
             <h3>Latest Smartphones</h3>
-            <a href="category.php?category=smartphone" class="btn">Shop Now</a>
+            <a href="category.php?category=smartphone" class="btn">Services Now</a>
          </div>
       </div>
 
@@ -61,7 +61,7 @@ include 'components/wishlist_cart.php';
          <div class="content">
             <span>Upto 50% off</span>
             <h3>Latest Watches</h3>
-            <a href="category.php?category=watch" class="btn">Shop Now.</a>
+            <a href="category.php?category=watch" class="btn">Services Now.</a>
          </div>
       </div>
 
@@ -72,7 +72,7 @@ include 'components/wishlist_cart.php';
          <div class="content">
             <span>upto 50% off</span>
             <h3>Latest headsets</h3>
-            <a href="shop.php" class="btn">Shop Now.</a>
+            <a href="services.php" class="btn">Services Now.</a>
          </div>
       </div>
 
@@ -88,7 +88,7 @@ include 'components/wishlist_cart.php';
 
 <section class="category">
 
-   <h1 class="heading">Shop by Category</h1>
+   <h1 class="heading">Services by Category</h1>
 
    <div class="swiper category-slider">
 
