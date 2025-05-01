@@ -20,7 +20,7 @@ include 'components/wishlist_cart.php';
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>KinBech.Com</title>
+   <title>Beauty Bliss</title>
 
    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
    
@@ -43,38 +43,40 @@ include 'components/wishlist_cart.php';
    
    <div class="swiper-wrapper">
 
-      <div class="swiper-slide slide">
-         <div class="image">
-            <img src="images/home-img-1.png" alt="">
-         </div>
-         <div class="content">
-            <span>Upto 50% Off</span>
-            <h3>Latest Smartphones</h3>
-            <a href="category.php?category=smartphone" class="btn">Services Now</a>
-         </div>
-      </div>
+      <title>Beauty Bliss</title>
+...
+<div class="swiper-slide slide">
+   <div class="image">
+      <img src="images/hair-styling.jpg" alt="Hair Styling">
+   </div>
+   <div class="content">
+      <span>Up to 30% Off</span>
+      <h3>Hair Styling Services</h3>
+      <a href="category.php?category=hair" class="btn">Book Now</a>
+   </div>
+</div>
 
-      <div class="swiper-slide slide">
-         <div class="image">
-            <img src="images/home-img-2.png" alt="">
-         </div>
-         <div class="content">
-            <span>Upto 50% off</span>
-            <h3>Latest Watches</h3>
-            <a href="category.php?category=watch" class="btn">Services Now.</a>
-         </div>
-      </div>
+<div class="swiper-slide slide">
+   <div class="image">
+      <img src="images/bridal-makeup.jpg" alt="Bridal Makeup">
+   </div>
+   <div class="content">
+      <span>Bridal Packages</span>
+      <h3>Exclusive Bridal Makeup</h3>
+      <a href="category.php?category=bridal" class="btn">Explore Now</a>
+   </div>
+</div>
 
-      <div class="swiper-slide slide">
-         <div class="image">
-            <img src="images/home-img-3.png" alt="">
-         </div>
-         <div class="content">
-            <span>upto 50% off</span>
-            <h3>Latest headsets</h3>
-            <a href="services.php" class="btn">Services Now.</a>
-         </div>
-      </div>
+<div class="swiper-slide slide">
+   <div class="image">
+      <img src="images/spa.jpg" alt="Spa Treatments">
+   </div>
+   <div class="content">
+      <span>Relax & Rejuvenate</span>
+      <h3>Spa & Facial Treatments</h3>
+      <a href="category.php?category=spa" class="btn">Book Now</a>
+   </div>
+</div>
 
    </div>
 
