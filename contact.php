@@ -1,92 +1,179 @@
 <?php
-
-include 'components/connect.php';
-
 session_start();
+error_reporting(0);
+include('includes/dbconnection.php');
+error_reporting(0);
 
-if(isset($_SESSION['user_id'])){
-   $user_id = $_SESSION['user_id'];
-}else{
-   $user_id = '';
-};
+if(isset($_POST['submit']))
+  {
+    $fname=$_POST['fname'];
+    $lname=$_POST['lname'];
+    $phone=$_POST['phone'];
+    $email=$_POST['email'];
+    $message=$_POST['message'];
+     
+    $query=mysqli_query($con, "insert into tblcontact(FirstName,LastName,Phone,Email,Message) value('$fname','$lname','$phone','$email','$message')");
+    if ($query) {
+   echo "<script>alert('Your message was sent successfully!.');</script>";
+echo "<script>window.location.href ='contact.php'</script>";
+  }
+  else
+    {
+       echo '<script>alert("Something Went Wrong. Please try again")</script>';
+    }
 
-if(isset($_POST['send'])){
-
-   $name = $_POST['name'];
-   $name = filter_var($name, FILTER_SANITIZE_STRING);
-   $email = $_POST['email'];
-   $email = filter_var($email, FILTER_SANITIZE_STRING);
-   $number = $_POST['number'];
-   $number = filter_var($number, FILTER_SANITIZE_STRING);
-   $msg = $_POST['msg'];
-   $msg = filter_var($msg, FILTER_SANITIZE_STRING);
-
-   $select_message = $conn->prepare("SELECT * FROM `messages` WHERE name = ? AND email = ? AND number = ? AND message = ?");
-   $select_message->execute([$name, $email, $number, $msg]);
-
-   if($select_message->rowCount() > 0){
-      $message[] = 'already sent message!';
-   }else{
-
-      $insert_message = $conn->prepare("INSERT INTO `messages`(user_id, name, email, number, message) VALUES(?,?,?,?,?)");
-      $insert_message->execute([$user_id, $name, $email, $number, $msg]);
-
-      $message[] = 'sent message successfully!';
-
-   }
-
+  
 }
+?>
+<!doctype html>
+<html lang="en">
+  <head>
+ 
 
+    <title>Beauty Parlour Management System | Contact us Page</title>
+
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="assets/css/style-starter.css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:400,700,700i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+  </head>
+  <body id="home">
+<?php include_once('includes/header.php');?>
+
+<script src="assets/js/jquery-3.3.1.min.js"></script> <!-- Common jquery plugin -->
+<!--bootstrap working-->
+<script src="assets/js/bootstrap.min.js"></script>
+<!-- //bootstrap working-->
+<!-- disable body scroll which navbar is in active -->
+<script>
+$(function () {
+  $('.navbar-toggler').click(function () {
+    $('body').toggleClass('noscroll');
+  })
+});
+</script>
+<!-- disable body scroll which navbar is in active -->
+
+<!-- breadcrumbs -->
+<section class="w3l-inner-banner-main">
+    <div class="about-inner contact ">
+        <div class="container">   
+            <div class="main-titles-head text-center">
+            <h3 class="header-name ">
+                
+ Contact Us
+            </h3>
+        </div>
+</div>
+</div>
+<div class="breadcrumbs-sub">
+<div class="container">   
+<ul class="breadcrumbs-custom-path">
+    <li class="right-side propClone"><a href="index.php" class="">Home <span class="fa fa-angle-right" aria-hidden="true"></span></a> <p></li>
+    <li class="active ">
+        Contact</li>
+</ul>
+</div>
+</div>
+    </div>
+</section>
+<!-- breadcrumbs //-->
+<section class="w3l-contact-info-main" id="contact">
+    <div class="contact-sec	">
+        <div class="container">
+
+            <div class="d-grid contact-view">
+                <div class="cont-details">
+                    <?php
+
+$ret=mysqli_query($con,"select * from tblpage where PageType='contactus' ");
+$cnt=1;
+while ($row=mysqli_fetch_array($ret)) {
 
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Contact</title>
+                    <div class="cont-top">
+                        <div class="cont-left text-center">
+                            <span class="fa fa-phone text-primary"></span>
+                        </div>
+                        <div class="cont-right">
+                            <h6>Call Us</h6>
+                            <p class="para"><a href="tel:+44 99 555 42">+<?php  echo $row['MobileNumber'];?></a></p>
+                        </div>
+                    </div>
+                    <div class="cont-top margin-up">
+                        <div class="cont-left text-center">
+                            <span class="fa fa-envelope-o text-primary"></span>
+                        </div>
+                        <div class="cont-right">
+                            <h6>Email Us</h6>
+                            <p class="para"><a href="mailto:example@mail.com" class="mail"><?php  echo $row['Email'];?></a></p>
+                        </div>
+                    </div>
+                    <div class="cont-top margin-up">
+                        <div class="cont-left text-center">
+                            <span class="fa fa-map-marker text-primary"></span>
+                        </div>
+                        <div class="cont-right">
+                            <h6>Address</h6>
+                            <p class="para"> <?php  echo $row['PageDescription'];?></p>
+                        </div>
+                    </div>
+                    <div class="cont-top margin-up">
+                        <div class="cont-left text-center">
+                            <span class="fa fa-map-marker text-primary"></span>
+                        </div>
+                        <div class="cont-right">
+                            <h6>Time</h6>
+                            <p class="para"> <?php  echo $row['Timing'];?></p>
+                        </div>
+                    </div>
+               <?php } ?> </div>
+                <div class="map-content-9 mt-lg-0 mt-4">
+                    <form method="post">
+                        <div class="twice-two">
+                            <input type="text" class="form-control" name="fname" id="fname" placeholder="First Name" required="">
+                            <input type="text" class="form-control" name="lname" id="lname" placeholder="Last Name" required="">
+                        </div>
+                        <div class="twice-two">
+                           <input type="text" class="form-control" placeholder="Phone" required="" name="phone" pattern="[0-9]+" maxlength="10">
+                            <input type="email" class="form-control" class="form-control" placeholder="Email" required="" name="email">
+                        </div>
+                        
+                        <textarea class="form-control" id="message" name="message" placeholder="Message" required=""></textarea>
+                        <button type="submit" class="btn btn-contact" name="submit">Send Message</button>
+                    </form>
+                </div>
+    </div>
    
-   <!-- font awesome cdn link  -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-
-   <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
-
-</head>
-<body>
-   
-<?php include 'components/user_header.php'; ?>
-
-<section class="contact">
-
-   <form action="" method="post">
-      <h3>Get in touch.</h3>
-      <input type="text" name="name" placeholder="enter your name" required maxlength="20" class="box">
-      <input type="email" name="email" placeholder="enter your email" required maxlength="50" class="box">
-      <input type="number" name="number" min="0" max="9999999999" placeholder="enter your number" required onkeypress="if(this.value.length == 10) return false;" class="box">
-      <textarea name="msg" class="box" placeholder="enter your message" cols="30" rows="10"></textarea>
-      <input type="submit" value="send message" name="send" class="btn">
-   </form>
-
+    </div></div>
 </section>
+<?php include_once('includes/footer.php');?>
+<!-- move top -->
+<button onclick="topFunction()" id="movetop" title="Go to top">
+	<span class="fa fa-long-arrow-up"></span>
+</button>
+<script>
+	// When the user scrolls down 20px from the top of the document, show the button
+	window.onscroll = function () {
+		scrollFunction()
+	};
 
+	function scrollFunction() {
+		if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+			document.getElementById("movetop").style.display = "block";
+		} else {
+			document.getElementById("movetop").style.display = "none";
+		}
+	}
 
-
-
-
-
-
-
-
-
-
-
-
-<?php include 'components/footer.php'; ?>
-
-<script src="js/script.js"></script>
-
+	// When the user clicks on the button, scroll to the top of the document
+	function topFunction() {
+		document.body.scrollTop = 0;
+		document.documentElement.scrollTop = 0;
+	}
+</script>
+<!-- /move top -->
 </body>
+
 </html>
